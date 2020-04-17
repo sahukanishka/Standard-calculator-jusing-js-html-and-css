@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .button:hover{
+            background-color:#f2f2f2;
+        }
+        .button{
+            width: 50;
+            height: 50;
+            font-size: 25;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            background-color: white;
+            color:black;
+            
+        }
+        .textview{
+            width:240 ;
+            margin: 5;
+            font-size: 25;
+            padding: 5;
+            border: none;
+        }
+
+        .main{
+            position: absolute;
+            top:50% ;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background-color:  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.22580645161290325) 0%, rgba(0,212,255,0.32949308755760365) 100%);
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        }
+        .heading{
+            text-align: center;
+            margin: 2;
+            padding: 2;
+            font-size:25;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <script>
+        function inputnum(num){
+            document.form.textview.value = document.form.textview.value + num
+        }
+        function cleartext(){
+            document.form.textview.value="";
+        }
+        function answer(){
+            var exp = document.form.textview.value;
+            if(exp){
+                document.form.textview.value = eval(exp);
+            }
+        }
+        function back(){
+            var exp = document.form.textview.value;
+            document.form.textview.value = exp.substring(0,exp.length-1);
+            }
+
+    
+    </script>
+</head>
+<body style="background:  #eff2f58e;">
+
+    <div class="main">
+        <div class="heading">
+            <p>Standard Calculator </p>
+        </div>
+        <form name="form" class="form">
+            <input type="text" name="textview" class="textview" >
+        </form>
+   
+    <table>
+        <tr>
+            <td><input type="button" class="button" value="C" onclick="cleartext()"></td>
+            <td><input type="button" class="button" value="<" onclick="back()"></td>
+            <td><input type="button" class="button" value="/" onclick="inputnum('/')"></td>
+            <td><input type="button" class="button" value="*" onclick="inputnum('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="7" onclick="inputnum(7)"></td>
+            <td><input type="button" class="button" value="8" onclick="inputnum(8)"></td>
+            <td><input type="button" class="button" value="9" onclick="inputnum(9)"></td>
+            <td><input type="button" class="button" value="+" onclick="inputnum('+')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="button"value="4" onclick="inputnum(4)"></td>
+            <td><input type="button" class="button" value="5" onclick="inputnum(5)"></td>
+            <td><input type="button" class="button" value="6" onclick="inputnum(6)"></td>
+            <td><input type="button" class="button" value="-" onclick="inputnum('-')"></td>            
+        </tr>
+        <tr>
+            <td><input type="button" class="button" value="1" onclick="inputnum(1)"></td>
+            <td><input type="button" class="button" value="2" onclick="inputnum(2)"></td>
+            <td><input type="button" class="button" value="3" onclick="inputnum(3)"></td>
+            <td rowspan="5"><input  class = "button " style="height: 111;" type="button" value="=" onclick="answer()"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input class = "button" style="width: 111;" type="button" value="0" onclick="inputnum(0)"></td>
+            <td><input type="button" class="button" value="." onclick="inputnum('.')"></td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
